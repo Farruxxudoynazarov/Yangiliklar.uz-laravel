@@ -6,12 +6,26 @@
         </a>
       </div>
       <ul class="sidebar-menu">
+  
         <li class="menu-header">Main</li>
   
+        @role('admin')
+        <li class="dropdown">
+          <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span class="text-danger">Adminstrator</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('admin.users.index') }}">Users </a></li>
+            <li><a class="nav-link" href="">Roles </a></li>
+            <li><a class="nav-link" href="">Permissions</a></li>
+          </ul>
+        </li>
+        @endrole
+
         <li class="dropdown">
           <a href="{{ route('admin.dashboard') }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
         </li>
   
+    
+
         <li class="dropdown">
           <a href="{{ route('admin.categories.index') }}" class="menu-toggle">
             <i data-feather="briefcase"></i>

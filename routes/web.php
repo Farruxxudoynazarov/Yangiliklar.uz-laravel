@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TagsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\RolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +44,20 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     })->name('dashboard');
 
 
+    // Route::post('/logout', 'AuthController'::class);
+
 
     Route::resource('categories', CategoriesController::class);
     Route::resource('post', PostsController::class);
     Route::post('/post-image-upload', [PostsController::class, 'upload'])->name('upload');
-    Route::resource('tag', TagsController::class);
+    Route::resource('tag', TagsController::class); 
+    Route::group(['middleware' => ['role:admin']], function() {        
+        Route::resource('users',UsersController::class);
+        Route::resource('roles', RolesController::class);
+     });
+
+    //  Route::resource('role', )
+
 
 });
 

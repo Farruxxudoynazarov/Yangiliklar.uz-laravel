@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Post::factory(20)->create();
+        $this->call(RolePermissionSeeder::class);
+
     }
 }

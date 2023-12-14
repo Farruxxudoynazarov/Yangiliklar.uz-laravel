@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+// use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -19,6 +20,23 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+
+
+// ...
+
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    // Sessiyani tozalash (agar kerak bo'lsa)
+    $request->session()->invalidate();
+
+    // Sessiya regeneratsiya qilinishini ta'minlash (xavfsizlik uchun)
+    $request->session()->regenerateToken();
+
+    return redirect('/login'); // Foydalanuvchini login sahifasiga yo'naltirish
+}
+
 
     /**
      * Handle an incoming authentication request.

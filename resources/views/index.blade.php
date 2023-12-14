@@ -6,7 +6,7 @@
 
 
 @section('title')
-Bosh sahifa
+Bosh sahifar
 @endsection
 
 @section('content')

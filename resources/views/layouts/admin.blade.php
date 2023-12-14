@@ -168,9 +168,16 @@
                 Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
+              {{-- <a href="auth-login.html"  --}}
+                Logoutss
+                <!-- logout.blade.php -->
+
+<form action="{{ route('logout') }}" method="POST">
+  @csrf
+  <button type="submit" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>>Chiqish</button>
+</form>
+
+            
             </div>
           </li>
         </ul>
